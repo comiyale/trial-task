@@ -34,4 +34,12 @@ $router->group(['middleware' => 'cors','prefix' => 'apiv1'], function () use ($r
     $router->post('updateNote', ['uses' => 'NotesController@updateNote']);
     $router->get('deleteNote/{id}', ['uses' => 'NotesController@deleteNote']);
 
+
+    $router->get('getPoints',  ['uses' => 'PointsController@getPoints']);
+    $router->get('getPoint/{id}', ['uses' => 'PointsController@getPoint']);
+    $router->post('createPoint', ['uses' => 'PointsController@createPoint']);
+    $router->post('updatePoint', ['uses' => 'PointsController@updatePoint']);
+    $router->delete('deletePoint/{id}', ['uses' => 'PointsController@deletePoint']);
+
+
 });

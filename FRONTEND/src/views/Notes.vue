@@ -1,26 +1,34 @@
 <template>
   <div id="app">
     <header>
-      <a href="#/Home" v-bind:class="{ notActiveButton: fadeNote }" id="notesBtn">Notes </a>
+      <a href="#/Home" v-bind:class="{ notActiveButton: fadeNote }" id="notesBtn">Points </a>
       <a href="#/AddTag" v-bind:class="{ notActiveButton: fadeTag }" id="tagsBtn">Tags</a>
     </header>
     <nav>
-      <a href="#/AddNote" class="btn">Add Note</a>
+      <a href="#/AddNote" class="btn">Add Point</a>
     </nav>
 
-    <ul v-if="notes.length > 0">
-      <li v-for="note of notes" :key="note.id">
-        <h2>{{note.title}}</h2>
-        <p>{{note.description}}</p>
-
-        <span class="tagSection" v-for="tag of note.tags" :key="tag.id">
-          <a href="#" class="btnSmall">{{tag.tag_name}}</a>
-        </span>
-        <section class="clearfix"></section>
-        <br>
-        <hr>
-      </li>
-    </ul>
+    <table class="table table-striped">
+      <thead class="thead-dark">
+        <tr>
+          <th>Name</th>
+          <th>X</th>
+          <th>Y</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+    <tbody v-if="points.length > 0">
+      <tr v-for="point of points" :key="point.id">
+        <td>{{point.name}}</td>
+        <td>{{point.x}}</td>
+        <td>{{point.y}}</td>
+        <td>
+          <button>Edit <i class="bi bi-pen-fill"></i></button> | 
+          <button @click="deletePoint(point.id)">Delete <i class="bi bi-x-circle"></i></button>
+        </td>
+      </tr>
+    </tbody>
+    </table>
   </div>
 </template>
 
@@ -34,8 +42,9 @@ export default {
   },
   data() {
     return {
-      endpoint: store.state.urlStore.baseUrl + store.state.urlStore.getNotesUrl,
-      notes: [],
+      endpoint: store.state.urlStore.baseUrl + store.state.urlStore.getPointsUrl,
+      endpoint2: store.state.urlStore.baseUrl + store.state.urlStore.deletePointsUrl,
+      points: [],
       errors: [],
       fadeTag: true,
       fadeNote: false
@@ -46,12 +55,29 @@ export default {
     .then(response => {
       if(response.data.status){
         let returnData = response.data;
-        this.notes = returnData.data;
+        this.points = returnData.data;
       }
     })
     .catch(e => {
       this.errors.push(e)
     })
+  },
+  methods: {    
+    deletePoint(id){      
+      if(confirm("Are you sure you want to delete?")){
+        axios.delete(this.endpoint2 + "/" + id)
+        .then(response => {
+          if(response.status == 200){
+            window.location.reload();
+          }
+        })
+        .catch(e => {
+          this.errors.push(e)
+        })
+
+      }
+
+    }
   }
 
 }

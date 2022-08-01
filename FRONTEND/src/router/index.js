@@ -23,7 +23,13 @@ const routes = [
     path: "/AddTag",
     name: "AddTag",
     component: () => import("../views/AddTag.vue")
+  },
+  {
+    path: "/ManagePointCrud",
+    name: "ManagePointCrud",
+    component: () => import("../views/ManagePointCrud.vue")
   }
+  
 ];
 
 const router = new VueRouter({

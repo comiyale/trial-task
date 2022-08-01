@@ -13,7 +13,11 @@ const urlCommons = {
     createTagUrl: "createTag",
     getTagsUrl: "getTags",
     deleteTagUrl: "deleteTag",
-    createNoteUrl: "createNote"
+    createNoteUrl: "createNote",
+
+    getPointsUrl: "getPoints",
+    deletePointsUrl: "deletePoint",
+
   },
   getter: {
     baseUrl: state => {
