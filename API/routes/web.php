@@ -22,19 +22,6 @@ $router->get('/', function () use ($router) {
 });
 
 $router->group(['middleware' => 'cors','prefix' => 'apiv1'], function () use ($router) {
-    $router->get('getTags',  ['uses' => 'TagsController@getTags']);
-    $router->get('getTag/{id}', ['uses' => 'TagsController@getTag']);
-    $router->post('createTag', ['uses' => 'TagsController@createTag']);
-    $router->post('updateTag', ['uses' => 'TagsController@updateTag']);
-    $router->get('deleteTag/{id}', ['uses' => 'TagsController@deleteTag']);
-
-    $router->get('getNotes',  ['uses' => 'NotesController@getNotes']);
-    $router->get('getNote/{id}', ['uses' => 'NotesController@getNote']);
-    $router->post('createNote', ['uses' => 'NotesController@createNote']);
-    $router->post('updateNote', ['uses' => 'NotesController@updateNote']);
-    $router->get('deleteNote/{id}', ['uses' => 'NotesController@deleteNote']);
-
-
     $router->get('getPoints',  ['uses' => 'PointsController@getPoints']);
     $router->get('getPoint/{id}', ['uses' => 'PointsController@getPoint']);
     $router->post('createPoint', ['uses' => 'PointsController@createPoint']);

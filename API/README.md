@@ -2,13 +2,19 @@
 
 ## Installation
 
-Set .env file with the right DB access details and create table.
+Rename .env.example file to .env and change DB access details.
+
+Create a mysql database and update the database name in the .env file
 
 php artisan migrate
 
 php artisan db:seed
 
 
-## RUNNING API
+## Running API
 
 php -S localhost:8000 -t public
+
+## Run API tests
+
+./vendor/bin/phpunit
