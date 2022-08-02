@@ -7,29 +7,24 @@ const routes = [
   {
     path: "/",
     name: "Home",
-    component: () => import("../views/Notes.vue")
+    component: () => import("../views/Points.vue")
   },
   {
     path: "/Home",
     name: "Home",
-    component: () => import("../views/Notes.vue")
+    component: () => import("../views/Points.vue")
   },
   {
-    path: "/AddNote",
-    name: "AddNote",
-    component: () => import("../views/AddNote.vue")
+    path: "/AddPoint",
+    name: "AddPoint",
+    component: () => import("../views/AddPoint.vue")
   },
   {
-    path: "/AddTag",
-    name: "AddTag",
-    component: () => import("../views/AddTag.vue")
+    path: "/EditPoint/:pointId",
+    name: "EditPoint",
+    component: () => import("../views/EditPoint.vue")
   },
-  {
-    path: "/ManagePointCrud",
-    name: "ManagePointCrud",
-    component: () => import("../views/ManagePointCrud.vue")
-  }
-  
+
 ];
 
 const router = new VueRouter({

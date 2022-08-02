@@ -70,6 +70,7 @@ class PointsController extends Controller
     public function updatePoint(Request $request)
     {
         $validator = Validator::make($request->all(), [
+            'id' => 'required',
             'name' => 'required',
             'x' => 'required',
             'y' => 'required'
@@ -81,11 +82,12 @@ class PointsController extends Controller
 
         $input = $request->all();
 
+        $id = $input['id'];
         $name = $input['name'];
         $x = $input['x'];
-        $y = $input['y'];
+        $y = $input['y'];   
 
-        $pointObj = Point::findOrFail($id);
+        $pointObj = Points::findOrFail($id);
         $pointObj->name = $name;
         $pointObj->x = $x;
         $pointObj->y = $y;

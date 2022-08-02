@@ -9,14 +9,12 @@ Vue.use(Vuex);
 const urlCommons = {
   state: {
     baseUrl: "http://localhost:8000/apiv1/",
-    getNotesUrl: "getNotes",
-    createTagUrl: "createTag",
-    getTagsUrl: "getTags",
-    deleteTagUrl: "deleteTag",
-    createNoteUrl: "createNote",
 
     getPointsUrl: "getPoints",
+    getPointUrl: "getPoint",
     deletePointsUrl: "deletePoint",
+    createPointUrl: "createPoint",
+    updatePointUrl: "updatePoint",
 
   },
   getter: {
